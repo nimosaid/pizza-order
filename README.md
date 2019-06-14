@@ -1,5 +1,5 @@
 # THE SLICE GUY
-#### This project interlinks clients to software developers, Sunday May 5 2019
+#### This delivers to you your ordered custom made pizza
 #### By **NIMO SAID**&trade;
 
 ## Description
