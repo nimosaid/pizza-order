@@ -1,42 +1,14 @@
-# DELANI STUDIO
+# THE SLICE GUY
 #### This project interlinks clients to software developers, Sunday May 5 2019
 #### By **NIMO SAID**&trade;
 
 ## Description
-This is a project that describes what Delani Studio, a fictional studio does and their works. Moreover, it allows users to send messages and receive email confirmations.
+This is a project about the slice guy, a pizza ordering web app.The user input their preferences and and places and order.Which is then delivered.
 
 ## Setup instructions
-* Clone the program from [Online repo](https://github.com/nimosaid/project-3)
+* Clone the program from [Online repo](https://github.com/nimosaid/pizza-order)
 * Click on the green button to clone or download
 
-## Behavior Driven Development
-<table>
-    <tr>
-      <th>Behavior</th>
-      <th>Input</th>
-      <th>Output</th>   
-    </tr>
-    <tr>
-        <td>Enter your address</td>
-        <td>['Nimo']</td>
-        <td>name = 'nimo'</td>
-    </tr>
-    <tr>
-        <td>Enter Email && Message</td>
-        <td>['Email','Message']</td>
-        <td>Email && Message</td>
-    </tr>
-    <tr>
-        <td>Submit</td>
-        <td>Email && Message</td>
-        <td>Thank you Nimo, details received</td>
-    </tr>
-    <tr>
-        <td>Sum of two values<= third value </td>
-        <td>[1,2,5]</td>
-        <td>No triangle</td>
-    </tr>    
-</table>
 
 ## Technologies Used
 * HTML
