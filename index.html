@@ -51,65 +51,53 @@
 
       <!************* Order *************>
 
-        <div class="Order">
-          <div class="container specific">
-            <h1 class="text-center what">ORDER</h1>
-            <div class="row text-center">
-              <div class="col-md-4 main">
-                <h5>
-                  <strong>Order Here:</strong>
-                </h5>
-                <img class="click" id="click1" src="img/design_icon.png" class=" img-fluid">
-                <div class="hide" id="hide1">
-                  <div class="Address">
-                    <h3>Address</h3>
+      <div class="Order">
+        <div class="container">
+          <div class="row">
+            <div class="text-center">
+              <h2><strong>Order</strong></h2>
+              <main>
+            <section>
+                <h2 class="header"><center>Best Pizza Ever!</center></h2><br>
+                <h4><center>Come and get some,homie.</center></h4><br>
+                <h3><center>Place Order</center></h3>
+            </section>
+            <section>
+                <div id=delivery>
+                    <form action ="pizzas.php" method="post">
+                    <h4>Delivery</h4>
 
-                    <form>
-
-                      <input type="text" name="text" placeholder="Phone number" required><br><br><br>
-
-                      <input type="text" name="text" placeholder="County" required><br><br><br>
-
-                      <input type="text" name="text" placeholder="Street" required><br><br><br>
-
-                      <input type="text" name="text" placeholder="Road" required><br><br><br>
-
-                    </form>
-                  </div>
+                    <input type="radio" name="radio">Delivery<br>
+                    <input type ="radio" name="radio">Pickup
                 </div>
-              </div>
-              <div class="col-md-4 main">
-                <img class="click" id="click2" src="./img/dev_icon.png" class="show img-fluid">
-                <h5>
-                  <strong>Size</strong>
-                </h5>
-                <div class="hide" id="hide2">
-                  <div class="Size">
+                <div class="Address">
+                    <h3>Address</h3>
+                    <input type="text" name="text" placeholder="Address Line 1" required><br><br><br>
+                    <input type ="text" name="text" placeholder="Address Line 2" required><br><br><br>
+                    <input type ="text" name="text" placeholder="City" required><br><br><br>
+                    <input type ="text" name="text" placeholder="State" required><br><br><br>
+                    <input type ="text" name="text" placeholder="Zip Code" required><br><br><br>
+
+
+
+                </div>
+                <div class="Size">
                     <h4>Size</h4>
                     <select>
-                      <option value="12">
-                        Small - Ksh 900
-                      </option>
-                      <option value="15">
-      .
-                        Medium - Ksh 1500
-                      </option>
-                      <option value="6">
-                        Large - Ksh 2500
+                        <option value="12">
+                            12" -$13.456
+                        </option>
+                        <option value="15">
+                            15" -$19.245
+                        </option>
+                        <option value= "6">
+                            6" -$9.45
 
-                      </option>
-                      <option value="25">
-                        Mega - Ksh 3200
-                      </option>
+                        </option>
+                        <option value="25">
+                            25" -$117.345
+                        </option>
                     </select>
-                  </div>
-                </div>
-                <div class="col-md-4 main">
-                  <img class="click" id="click3" src="./img/product_icon.png" class="show img-fluid">
-                  <h5>
-                    <strong>TOPPINGS</strong>
-                  </h5>
-                  <div class="hide" id="hide3">
                     <br><br><b>Ingredients</b><br><br>
                     <input type="checkbox" name="checkbox">Pepperoni<br><br><br>
                     <input type="checkbox" name="checkbox">Salami<br><br><br>
@@ -117,17 +105,16 @@
                     <input type="checkbox" name="checkbox">Italian Sausage<br><br><br>
                     <input type="checkbox" name="checkbox">Paneer and Onions<br><br><br>
                     <input type="checkbox" name="checkbox">Green Peppers<br><br><br>
-                    <br><br><b>Crust</b><br><br>
-                    <input type="checkbox" name="checkbox">Chewy<br><br><br>
-                    <input type="checkbox" name="checkbox">Crunchy<br><br><br>
-                    <input type="checkbox" name="checkbox">Flat<br><br><br>
+
                     <button type="submit" value="send">Place Order</button><br><br>
-                  </div>
+                        </form>
                 </div>
-              </div>
+            </section>
+
             </div>
           </div>
         </div>
+      </div>
 
 
         <!*********** Gallery **************>

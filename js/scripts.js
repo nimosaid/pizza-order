@@ -3,6 +3,13 @@ $(document).ready(function() {
     $("#hide1").fadeToggle();
     $("#click1").fadeToggle("slow");
   });
+
+  $(document).ready(function() {
+  $("#formButton").click(function() {
+    $("#form1").toggle();
+  });
+});
+
   $("#hide1").click(function() {
     $("#click1").fadeToggle();
     $("#hide1").fadeToggle("slow");
