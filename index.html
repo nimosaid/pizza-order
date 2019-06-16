@@ -8,7 +8,9 @@
   <title> The Slice Guy</title>
   <link rel="stylesheet" href="css/styles.css" type="text/css">
   <link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+  <link rel="icon" href="https://pbs.twimg.com/profile_images/586721470635708416/u7nZ1mr6.png" type="images/icon">
   <script src="js/scripts.js" charset="utf-8"></script>
+  <script src="js/jquery-3.1.0.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js">
   </script>
 </head>
@@ -68,101 +70,178 @@
                       <center>Place Order:</center>
                     </h3>
                   </section>
-                  <section>
-                    <div id=delivery>
-                      <form  action="" method="post">
-                        <h4>Delivery</h4>
-                        <input type="radio" name="radio">Delivery<br>
-                        <input type="radio" name="radio">Pickup
-                    </div>
-                    <div class="Address">
-                      <h3>Address</h3>
-                      <input type="text" name id placeholder="Phone number" required><br><br><br>
-                      <input type="text" name="text" placeholder="County" required><br><br><br>
-                      <input type="text" name="text" placeholder="Street" required><br><br><br>
-                      <input type="text" name="text" placeholder="Road" required><br><br><br>
-
-
-                    </div>
-                    <div class="Size">
-                      <h4>Size</h4>
-                      <select>
-                        <option value="12">
-                          Small(12") - Ksh 900
-                        </option>
-                        <option value="15">
-                          Medium(15") - Ksh 1500
-                        </option>
-                        <option value="20">
-                          Large(20") - Ksh 2500
-
-                        </option>
-                        <option value="25">
-                          Mega(25") - Ksh 3200
-                        </option>
+                  <form id="pizza1">
+                    <div class="form-group">
+                      <label for="time">Select a size</label>
+                      <select class="form-control" id="size">
+                        <option value="1">Small (Serves 2 people or 1 hungry person)</option>
+                        <option value="2">Medium (Serves 3 people or 2 hungry people or 1 quite hungry person)</option>
+                        <option value="3">Large (Serves 4 people or 3 hungry people or 1 very hungry person)</option>
+                        <option value="4">Extra-Large (Serves 5 people or 4 hungry people or 1 literally starving person)</option>
                       </select>
-                      <p>(This includes toppings)</p>
-                      <div class="Ingredients">
-                        <br><br><b>Ingredients</b><br><br>
-                        <input type="checkbox" name="checkbox">Pepperoni<br><br><br>
-                        <input type="checkbox" name="checkbox">Salami<br><br><br>
-                        <input type="checkbox" name="checkbox">Bacon<br><br><br>
-                        <input type="checkbox" name="checkbox">Italian Sausage<br><br><br>
-                        <input type="checkbox" name="checkbox">Paneer and Onions<br><br><br>
-                        <input type="checkbox" name="checkbox">Green Peppers<br><br><br>
+                    </div>
+                    <button class="btn-danger btn" type="submit" name="button">Add some toppings!</button>
+                  </form>
+                  <div class="row ">
+                    <div class="col-xs-7 col-xs-offset-1">
+                      <div class="row topsAdd stagedReveal framed">
+                        <div class="col-xs-5">
+                          <h3 class="heading">Pick your toppings:</h3>
+                          <form action="form_action.asp" class="toppings">
+                            <input type="checkbox" name="topping" value="1" id="cheese">Cheese<br>
+                            <input type="checkbox" name="topping" value="2">Pepperoni<br>
+                            <input type="checkbox" name="topping" value="3">Sausage<br>
+                            <input type="checkbox" name="topping" value="4">Canadian Bacon<br>
+                            <input type="checkbox" name="topping" value="5">Steak<br>
+                            <input type="checkbox" name="topping" value="6">Tofu<br>
+                          </form>
+                        </div>
+                        <div class="col-xs-5">
+                          <br>
+                          <br>
+                          <br>
+                          <form action="form_action.asp" class="toppings">
+                            <input type="checkbox" name="topping" value="7">Onions<br>
+                            <input type="checkbox" name="topping" value="8">Green Peppers<br>
+                            <input type="checkbox" name="topping" value="9">Mushrooms<br>
+                            <input type="checkbox" name="topping" value="10">Pineapple<br>
+                            <input type="checkbox" name="topping" value="11">Olives<br>
+                            <input type="checkbox" name="topping" value="12">Jalapenos<br>
+                            <br>
+                            <button class="btn-danger btn" type="submit" name="button" id="topSubmit">Submit</button>
+                          </form>
+                        </div>
+                      </div>
+                      <div class="row stagedReveal thanks framed">
+                        <div class="col-xs-9 ">
+                          <h1>Thank you for your order!</h1>
+                          <p>Hang on, I need another pizza!</p>
+                          <form id="pizza2">
+                            <div class="form-group">
+                              <label for="time">Select a size</label>
+                              <select class="form-control" id="size2">
+                                <option value="1">Small (Serves 2 people or 1 hungry person)</option>
+                                <option value="2">Medium (Serves 3 people or 2 hungry people or 1 quite hungry person)</option>
+                                <option value="3">Large (Serves 4 people or 3 hungry people or 1 very hungry person)</option>
+                                <option value="4">Extra-Large (Serves 5 people or 4 hungry people or 1 literally starving person)</option>
+                              </select>
+                            </div>
+                            <button class="btn-danger btn" type="submit" name="button">Add to order!</button>
+                          </form>
+                          <br>
+                          <h4>Or, are you ready to go?</h4>
+                          <br>
+                          <button class="btn-danger btn btn-large" type="button" name="button" id="goToDelivery">I'm ready to submit this order</button>
+                        </div>
+                      </div>
+                      <div class="delivery stagedReveal framed">
+                        <h3>What is your delivery address?</h3>
+                        <form id="new-address">
+                          <div class="form-group">
+                            <label for="Name">First name</label>
+                            <input type="text" class="form-control" id="name">
+                          </div>
+                          <div>
+                            <div class="new-address">
+                              <div class="form-group">
+                                <label for="new-street-name">Phone number</label>
+                                <input type="text" class="form-control new-street" id="street">
+                              </div>
+                              <div class="form-group">
+                                <label for="new-city">County</label>
+                                <input type="text" class="form-control new-city" id="city">
+                              </div>
+                              <div class="form-group">
+                                <label for="new-state">Street</label>
+                                <input type="text" class="form-control new-state" id="state">
+                              </div>
+                              <div class="form-group">
 
-
-                        <button type="submit" value="send">Place Order</button><br><br>
+                                <input type="text" class="form-control" id="zip">
+                              </div>
+                              <div class="form-group">
+                                <label for="address-type">Rush Order (Skip the line for Ksh100 extra!)</label>
+                                <select class="form-control" id="rushOrder">
+                                  <option value="1">No, Thank you.</option>
+                                  <option value="2">Yes Please!</option>
+                                </select>
+                              </div>
+                            </div>
+                          </div>
+                          <button type="submit" class="btn btn-danger" id="deliverySubmit">Deliver here</button>
                         </form>
                       </div>
                     </div>
-                  </section>
+                    <div class="col-xs-3 col-xs-offset-1 stagedReveal totalBox framed">
+                      <h3 class="heading">Order total</h3>
+                      <ol id="output">
+                      </ol>
+                      <div class="row">
+                        <div class="col-xs-10 col-xs-offset-1" id="totalDiv">
+                          <p>$<span class="framed" id="totalHere"></span></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-xs-6 col-xs-offset-3 goodbye stagedReveal framed">
+                        <h3>Thank you <span id="nameHere"></span>!</h3>
+                        <div class="row">
+                          <div class="col-xs-7 addressText">
+                            <h3>Your Final order total is: Ksh<span id="finalTotalHere"></span></h3>
+                            <h3>We will deliver to this address:</h3>
+                            <h4><span id="streetHere"></span></h4>
+                            <h4><span id="countyHere"></span>, <span id="countyHere"></span></h4>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
+
+                  </div>
               </div>
             </div>
           </div>
-        </div>
 
 
-        <!*********** Gallery **************>
+          <!*********** Gallery **************>
 
-          <div class="container-fluid" class="gallery">
-            <h5 class="text-center">GALLERY</h5>
-            <div class="card-deck text-center">
-              <div class="card">
-                <img src="img/gal5.jpeg" alt="">
-              </div>
-              <div class="card">
-                <img src="img/gal1.jpeg" alt="">
-              </div>
-              <div class="card">
-                <img src="img/gal6.jpeg" alt="">
-              </div>
-
+            <div class="container-fluid" class="gallery">
+              <h5 class="text-center">GALLERY</h5>
               <div class="card-deck text-center">
                 <div class="card">
-                  <img src="img/gal2.jpeg" alt="">
+                  <img src="img/gal5.jpeg" alt="">
+                </div>
+                <div class="card">
+                  <img src="img/gal1.jpeg" alt="">
+                </div>
+                <div class="card">
+                  <img src="img/gal6.jpeg" alt="">
                 </div>
 
-                <div class="card">
-                  <img src="img/gal8.jpeg" alt="">
+                <div class="card-deck text-center">
+                  <div class="card">
+                    <img src="img/gal2.jpeg" alt="">
+                  </div>
+
+                  <div class="card">
+                    <img src="img/gal8.jpeg" alt="">
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <!***************footer**************>
+            <!***************footer**************>
 
-            <footer>
-              <center>
-                &copy; Nimo Said 2019
-                <br>
-                <a href="">Terms Of Service</a>
-              </center>
-            </footer>
-            <script src="./javascript/script.js"></script>
-            <script src="./javascript/jquery-3.4.1.js"></script>
-            <script src="./javascript/bootstrap.js"></script>
+              <footer>
+                <center>
+                  &copy; Nimo Said 2019
+                  <br>
+                  <a href="">Terms Of Service</a>
+                </center>
+              </footer>
+              <script src="./javascript/script.js"></script>
+              <script src="./javascript/jquery-3.4.1.js"></script>
+              <script src="./javascript/bootstrap.js"></script>
 </body>
 
 </html>
