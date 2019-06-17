@@ -40,3 +40,87 @@ Pizza.prototype.addTops = function(array) {
     this.rush = false;
     this.grandTotal = 0;
   }
+
+  var order = new Order;
+  //Order Object Methods
+  Order.prototype.calcGTotal = function(total) {
+    this.grandTotal += total;
+  }
+  //Functions
+  var nameGen = function(size) {
+    if (size==="1") {
+      return "small"
+    } else if (size==="2") {
+      return "medium"
+    } else if (size==="3") {
+      return "large"
+    } else if (size==="4") {
+      return "Extra-large"
+    }
+  }
+  var checkRushed = function(value) {
+    if (value==="1") {
+      console.log("something")
+    } else if (value==="2") {
+      order.grandTotal += 5;
+    }
+  }
+  //Front-End
+  $(document).ready(function() {
+    $("form#pizza1").submit(function(event) {
+      event.preventDefault();
+      var pizzaSize = $("#size").val();
+      var pizzaName = "A " + nameGen(pizzaSize)+" pizza";
+      var pizza = new Pizza(pizzaSize, pizzaName);
+      order.items.push(pizza);
+    });
+    $("form.toppings").submit(function(event) {
+      event.preventDefault();
+      var toppingsArr = []
+      $("input:checkbox[name=topping]:checked").each(function(){
+          toppingsArr.push($(this).val());
+      });
+      $('input:checkbox').prop('checked', false);
+      order.items[counter].addTops(toppingsArr);
+      var total = order.items[counter].calcCost();
+      order.calcGTotal(total);
+      var node = document.createElement("li");
+      var textnode = document.createTextNode(order.items[counter].name);
+      node.appendChild(textnode);
+      document.getElementById("output").appendChild(node);
+      counter++;
+      $("#totalHere").text(order.grandTotal);
+      $(".topsAdd").slideToggle();
+      $(".thanks").show();
+      $(".totalBox").show();
+    });
+    $("form#pizza2").submit(function(event) {
+      event.preventDefault();
+      var pizzaSize = $("#size2").val();
+      var pizzaName = "A " + nameGen(pizzaSize)+" pizza";
+      var pizza = new Pizza(pizzaSize, pizzaName);
+      order.items.push(pizza);
+      $(".thanks").slideToggle();
+      $(".topsAdd").slideToggle();
+    });
+    $("#goToDelivery").click(function(event) {
+      $(".thanks").slideToggle();
+      $(".delivery").slideToggle();
+    });
+    $("form#new-address").submit(function(event) {
+      event.preventDefault();
+      $(".delivery").slideToggle();
+      $(".totalBox").slideToggle();
+      $(".goodbye").slideToggle();
+      var orderName = $("input#name").val();
+      var orderPhonenumber = $("input#street").val();
+      var orderStreet = $("input#city").val();
+      var orderCounty = $("input#state").val();
+      var rushed = $("#rushOrder").val();
+      checkRushed(rushed);
+      $("#nameHere").text(orderName);
+      $("#streetHere").text(orderStreet);
+      $("#countyHere").text(ordercounty);
+      $("#finalTotalHere").text(order.grandTotal);
+    });
+  });
