@@ -1,0 +1,184 @@
+@import url("https://fonts.googleapis.com/css?family=Cute+Font|Merienda");
+@import url("https://fonts.googleapis.com/css?family=Akronim");
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+
+.first {
+    padding-top: 10%;
+    margin-bottom: 9%;
+}
+
+.hed {
+  background-image: url("../img/pizza4.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  height: 700px;
+  position: relative;
+  padding: 100px;
+  font-family: 'Merienda', cursive;
+}
+
+h1 {
+  color: black;
+}
+
+#nimo {
+  color: black;
+  font-size: 200%;
+}
+
+.About {
+  background-color: black;
+  padding-left: : 100px;
+  color:white;
+  font-family: 'Merienda', cursive;
+  height: 600px;
+  padding: 150px;
+  padding-bottom: 500px
+}
+
+
+h5 {
+  color: white;
+}
+
+body>main>section>h2
+{
+    border:1px solid #000;
+    margin=20px;
+    color:darkgoldenrod;
+    position:fixed;
+    width:100%;
+    background:rgba(255,255,255,0.9);
+
+}
+
+.specific {
+    margin-bottom: 4%;
+}
+
+.Order {
+  background-image: url("../img/pizza7.jpg");
+  background-size: cover;
+  background-repeat: repeat-y;
+  position: relative;
+  height: 2000px;
+  position: relative;
+  padding-bottom: 400px;
+  font-family: 'Merienda', cursive;
+  color: white;
+  padding-left: 400px;
+  padding-right: 400px;
+  padding-bottom: 20px;
+}
+
+#totalDiv {
+  font-size: 40px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.Size {
+  float: left;
+  text-align: center;
+  color:aliceblue;
+}
+
+.footer {
+    margin-top: 20px;
+    padding-top: 20px;
+    color: black;
+}
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.sasa{
+  padding-left: 200px;
+  padding-right: 200px;
+
+}
+
+.largerText {
+  font-size: 20px;
+}
+
+.customizeBox {
+  border: 1px solid skyblue;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px 3px skyblue;
+  background-color: black;
+}
+
+#receipt {
+  width: 400px;
+  display: none;
+  border: 1px double skyblue;
+  border-radius: 10px;
+  padding: 20px 10px;
+  margin: 0 auto 50px auto;
+  background-color: #ddd;
+  box-shadow: 5px 5px 15px #333;
+  color: black;
+}
+
+.container {
+  padding: 30px;
+  position: relative;
+  top: 100px;
+}
+
+.ingredients {
+  color: darkblue;
+  font-style: oblique;
+  font-size: 85%;
+}
+
+.receiptRow {
+  margin: 10px 0px;
+  border-bottom: 1px dashed skyblue;
+}
+
+.costs {
+  position: absolute;
+  right: 15px;
+}
+
+#total {
+  font-weight: bolder;
+  padding: 10px;
+  margin-top: 30px;
+  border-top: 1px dotted grey;
+  border-bottom: 1px dotted grey;
+}
+
+#orderAgain {
+  margin: auto;
+  display: none;
+}
+
+
+@media screen and (max-width:450px) {
+    .form-cont input {
+        width: 100%;
+        margin-top: 10px;
+    }
+    body{
+        overflow-x: hidden;
+    }
+}
+@media screen and (max-width:1024px) {
+    * {
+        font-size: calc(1vw + 1vh + .5vmin);
+    }
+}
