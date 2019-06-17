@@ -122,5 +122,5 @@ Pizza.prototype.addTops = function(array) {
       $("#streetHere").text(orderStreet);
       $("#countyHere").text(ordercounty);
       $("#finalTotalHere").text(order.grandTotal);
-    });
+    });;
   });
