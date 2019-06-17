@@ -1,126 +1,117 @@
+// back-end logic
 
-var counter = 0
-
-//Objects
-
-function Pizza(size, name) {
-  this.ingredients = [];
-  this.size = size;
-  this.price = 800;
-  this.name = name;
-}
-//Pizza Object Methods
-
-Pizza.prototype.addTops = function(array) {
-  for(i=0;i<array.length;i++) {
-    this.ingredients.push(parseInt(array[i]));
-  }
-
-  Pizza.prototype.calcCost = function() {
-    for(i=0;i<this.ingredients.length;i++) {
-      if ((this.ingredients[i]>=1)&&(this.ingredients[i]<=6)) {
-        this.price += 2;
-      } else if (this.ingredients[i]>=7 && this.ingredients[i]<=12){
-        this.price +=1;
-      }
-    }
-    if (this.size==="1") {
-      this.price+=0
-    } else if (this.size==="2") {
-      this.price+=2
-    } else if (this.size==="3") {
-      this.price+=4
-    } else if (this.size==="4") {
-      this.price+=5
-    }
-    return this.price;
-  }
-  function Order() {
-    this.items = [];
-    this.rush = false;
-    this.grandTotal = 0;
-  }
-
-  var order = new Order;
-  //Order Object Methods
-  Order.prototype.calcGTotal = function(total) {
-    this.grandTotal += total;
-  }
-  //Functions
-  var nameGen = function(size) {
-    if (size==="1") {
-      return "small"
-    } else if (size==="2") {
-      return "medium"
-    } else if (size==="3") {
-      return "large"
-    } else if (size==="4") {
-      return "Extra-large"
-    }
-  }
-  var checkRushed = function(value) {
-    if (value==="1") {
-      console.log("something")
-    } else if (value==="2") {
-      order.grandTotal += 5;
-    }
-  }
-  //Front-End
-  $(document).ready(function() {
-    $("form#pizza1").submit(function(event) {
-      event.preventDefault();
-      var pizzaSize = $("#size").val();
-      var pizzaName = "A " + nameGen(pizzaSize)+" pizza";
-      var pizza = new Pizza(pizzaSize, pizzaName);
-      order.items.push(pizza);
-    });
-    $("form.toppings").submit(function(event) {
-      event.preventDefault();
-      var toppingsArr = []
-      $("input:checkbox[name=topping]:checked").each(function(){
-          toppingsArr.push($(this).val());
-      });
-      $('input:checkbox').prop('checked', false);
-      order.items[counter].addTops(toppingsArr);
-      var total = order.items[counter].calcCost();
-      order.calcGTotal(total);
-      var node = document.createElement("li");
-      var textnode = document.createTextNode(order.items[counter].name);
-      node.appendChild(textnode);
-      document.getElementById("output").appendChild(node);
-      counter++;
-      $("#totalHere").text(order.grandTotal);
-      $(".topsAdd").slideToggle();
-      $(".thanks").show();
-      $(".totalBox").show();
-    });
-    $("form#pizza2").submit(function(event) {
-      event.preventDefault();
-      var pizzaSize = $("#size2").val();
-      var pizzaName = "A " + nameGen(pizzaSize)+" pizza";
-      var pizza = new Pizza(pizzaSize, pizzaName);
-      order.items.push(pizza);
-      $(".thanks").slideToggle();
-      $(".topsAdd").slideToggle();
-    });
-    $("#goToDelivery").click(function(event) {
-      $(".thanks").slideToggle();
-      $(".delivery").slideToggle();
-    });
-    $("form#new-address").submit(function(event) {
-      event.preventDefault();
-      $(".delivery").slideToggle();
-      $(".totalBox").slideToggle();
-      $(".goodbye").slideToggle();
-      var orderName = $("input#name").val();
-      var orderPhonenumber = $("input#street").val();
-      var orderStreet = $("input#city").val();
-      var orderCounty = $("input#state").val();
-      var rushed = $("#rushOrder").val();
-      checkRushed(rushed);
-      $("#nameHere").text(orderName);
-      $("#streetHere").text(orderStreet);
-      $("#countyHere").text(ordercounty);
-      $("#finalTotalHere").text(order.grandTotal);
-    });;
+function getValues() {
+  var meats = [];
+  var veggies = [];
+  var size = $('input[name=selectSize]:checked').val();
+  $('.meat:checked').each(function(m) {
+    meats[m] = $(this).val();
   });
+  $('.veggie:checked').each(function(v) {
+    veggies[v] = $(this).val();
+  });
+  var cheese = $('input[name=cheeseRadio]:checked').val();
+  var crust = $('input[name=crustRadio]:checked').val();
+  var sauce = $('input[name=sauceRadio]:checked').val();
+
+  var values = [size, meats, veggies, cheese, crust, sauce];
+  return values;
+};
+
+function calculateMeatVeggie(array) {
+  if (array.length === 0) {
+    return 0;
+  } else {
+    var cost = array.length -1;
+    return cost;
+  }
+};
+
+function calculateCheese() {
+  if ($('input[name=cheeseRadio]:checked').val() === 'Extra Cheese') {
+    var cost = 3;
+    return cost;
+  } else return 0;
+};
+
+function calculateCrust() {
+  if ($('input[name=crustRadio]:checked').val() === 'Cheese Stuffed Crust') {
+    var cost = 3;
+    return cost;
+  } else return 0;
+};
+
+function calculateSize(size) {
+  if (size === "Personal") {
+    return 600;
+  } else if (size === "Medium") {
+    return 1000;
+  } else if (size === "Large") {
+    return 1400;
+  } else if (size === "X-Large") {
+    return 1600;
+  }
+};
+
+function concat(toppings, cost) {
+  if (cost === 0) {
+    return "NONE";
+  } else if (cost >= 1) {
+    var oneWord = toppings.join(", ");
+  return oneWord;
+  }
+};
+
+//front-end logic
+$(function() {
+
+  //calculate receipt on submit
+  $('form').submit(function() {
+    event.preventDefault();
+    var valuesArray = getValues();
+    var size = valuesArray[0];
+    var meats = valuesArray[1];
+    var veggies = valuesArray[2];
+    var cheese = valuesArray[3];
+    var crust = valuesArray[4];
+    var sauce = valuesArray[5];
+    var sizeCost = calculateSize(size);
+    var meatCost = calculateMeatVeggie(meats);
+    var veggieCost = calculateMeatVeggie(veggies);
+    var cheeseCost = calculateCheese();
+    var crustCost = calculateCrust();
+    var sauceCost = 0;
+    var totalCost = sizeCost + meatCost + veggieCost + sauceCost + cheeseCost + crustCost;
+
+    meats = concat(meats, meatCost);
+    veggies = concat(veggies, veggieCost);
+
+    $('#sizeSelection').html(size);
+    $('#sizeCost').html(sizeCost);
+    $('#crustSelection').html(crust);
+    $('#crustCost').html(crustCost);
+    $('#cheeseSelection').html(cheese);
+    $('#cheeseCost').html(cheeseCost);
+    $('#sauceSelection').html(sauce);
+    $('#sauceCost').html(sauceCost);
+    $('#meatSelection').html(meats);
+    $('#meatCost').html(meatCost);
+    $('#veggieSelection').html(veggies);
+    $('#veggieCost').html(veggieCost);
+    $('#totalCost').html(totalCost);
+
+    $('#receipt').slideToggle(800);
+
+    $('form').slideToggle(800);
+    $('#orderAgain').show();
+  });
+
+  //clear form and order again!
+  $('#orderAgain').click(function() {
+    event.preventDefault;
+    $('form').trigger('reset');
+    $('form').slideToggle(800);
+    $('#receipt').slideToggle(800);
+    $('#orderAgain').hide();
+  });
+});
