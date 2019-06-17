@@ -36,7 +36,7 @@ function calculateCheese() {
 
 function calculateCrust() {
   if ($('input[name=crustRadio]:checked').val() === 'Cheese Stuffed Crust') {
-    var cost = 3;
+    var cost = 300;
     return cost;
   } else return 0;
 };
